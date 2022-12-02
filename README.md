@@ -1,140 +1,116 @@
-# Welcome to GitHub
 
-Welcome to GitHub—where millions of developers work together on software. Ready to get started? Let’s learn how this all works by building and publishing your first GitHub Pages website!
+![MapOS](https://raw.githubusercontent.com/RamonSilva20/mapos/master/assets/img/logo.png)
 
-## Repositories
+![version](https://img.shields.io/badge/version-4.32.0-blue.svg?longCache=true&style=flat-square)
+![license](https://img.shields.io/badge/license-MIT-green.svg?longCache=true&style=flat-square)
+![theme](https://img.shields.io/badge/theme-Matrix--Admin-lightgrey.svg?longCache=true&style=flat-square)
+![issues](https://img.shields.io/github/issues/RamonSilva20/mapos.svg?longCache=true&style=flat-square)
+![contributors](https://img.shields.io/github/contributors/RamonSilva20/mapos.svg?longCache=true&style=flat-square)
 
-Right now, we’re in your first GitHub **repository**. A repository is like a folder or storage space for your project. Your project's repository contains all its files such as code, documentation, images, and more. It also tracks every change that you—or your collaborators—make to each file, so you can always go back to previous versions of your project if you make any mistakes.
+### [Demonstração](https://demo.mapos.com.br)
 
-This repository contains three important files: The HTML code for your first website on GitHub, the CSS stylesheet that decorates your website with colors and fonts, and the **README** file. It also contains an image folder, with one image file.
+![Map-OS](https://raw.githubusercontent.com/RamonSilva20/mapos/master/docs/dashboard.png)
 
-## Describe your project
+### [Instalação](Instalacao_xampp_windows.md)
 
-You are currently viewing your project's **README** file. **_README_** files are like cover pages or elevator pitches for your project. They are written in plain text or [Markdown language](https://guides.github.com/features/mastering-markdown/), and usually include a paragraph describing the project, directions on how to use it, who authored it, and more.
+1. Faça o download dos arquivos.
+2. Extraia o pacote e copie para seu webserver.
+3. Rode o comando `composer install --no-dev` a partir da raiz do projeto.
+4. Acesse sua URL e inicie a instalação, é bem simples, basta preencher as informações no assistente de instalação **MAPOS**.
+5. Configure o email de envio no arquivo email.php.
+6. Configurar cron jobs para envio de e-mail:
+    ##### Enviar emails pendentes a cada 2 minutos.
+    - */2 * * * * php /var/www/index.php email/process
+    ##### Enviar emails com falha a cada 5 minutos.
+    - */5 * * * * php /var/www/index.php email/retry
 
-[Learn more about READMEs](https://help.github.com/en/articles/about-readmes)
+    ##### Obs: O path até o index.php (/var/www/) deve ser configurado conforme o seu ambiente
 
-## Your first website
 
-**GitHub Pages** is a free and easy way to create a website using the code that lives in your GitHub repositories. You can use GitHub Pages to build a portfolio of your work, create a personal website, or share a fun project that you coded with the world. GitHub Pages is automatically enabled in this repository, but when you create new repositories in the future, the steps to launch a GitHub Pages website will be slightly different.
+### Instalação (Docker)
 
-[Learn more about GitHub Pages](https://pages.github.com/)
-
-## Rename this repository to publish your site
-
-We've already set-up a GitHub Pages website for you, based on your personal username. This repository is called `hello-world`, but you'll rename it to: `username.github.io`, to match your website's URL address. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
-
-Let's get started! To update this repository’s name, click the `Settings` tab on this page. This will take you to your repository’s settings page. 
-
-![repo-settings-image](https://user-images.githubusercontent.com/18093541/63130482-99e6ad80-bf88-11e9-99a1-d3cf1660b47e.png)
-
-Under the **Repository Name** heading, type: `username.github.io`, where username is your username on GitHub. Then click **Rename**—and that’s it. When you’re done, click your repository name or browser’s back button to return to this page.
-
-<img width="1039" alt="rename_screenshot" src="https://user-images.githubusercontent.com/18093541/63129466-956cc580-bf85-11e9-92d8-b028dd483fa5.png">
-
-Once you click **Rename**, your website will automatically be published at: https://your-username.github.io/. The HTML file—called `index.html`—is rendered as the home page and you'll be making changes to this file in the next step.
-
-Congratulations! You just launched your first GitHub Pages website. It's now live to share with the entire world
-
-## Making your first edit
-
-When you make any change to any file in your project, you’re making a **commit**. If you fix a typo, update a filename, or edit your code, you can add it to GitHub as a commit. Your commits represent your project’s entire history—and they’re all saved in your project’s repository.
-
-With each commit, you have the opportunity to write a **commit message**, a short, meaningful comment describing the change you’re making to a file. So you always know exactly what changed, no matter when you return to a commit.
-
-## Practice: Customize your first GitHub website by writing HTML code
-
-Want to edit the site you just published? Let’s practice commits by introducing yourself in your `index.html` file. Don’t worry about getting it right the first time—you can always build on your introduction later.
-
-Let’s start with this template:
-
+1. Faça o download dos arquivos.
+2. Instale o [Docker](https://docs.docker.com/install/) e o [Docker Compose](https://docs.docker.com/compose/install/).
+3. Entre na pasta `docker` no seu terminal e rode o comando `docker-compose up --force-recreate`.
+4. Acesse a URL `http://localhost:8000/` no navegador e inicie a instalação.
+5. Na etapa de configuração use as seguintes configurações:
 ```
-<p>Hello World! I’m [username]. This is my website!</p>
+1. Por favor, insira as informações da sua conexão de banco de dados.
+Host: mysql
+Usuário: mapos
+Senha: mapos
+Banco de Dados: mapos
+
+2. Por favor, insira as informações para sua conta de administrador.
+Configure do jeito que quiser.
+
+3. Por favor, insira a URL.
+URL: http://localhost:8000/
 ```
+6. Configure o email de envio no arquivo email.php.
 
-To add your introduction, copy our template and click the edit pencil icon at the top right hand corner of the `index.html` file.
+    ##### Obs: Cuide da pasta `docker/data`, onde é pasta que o mysql do docker salva os arquivos. Se for deletada você perderá seu banco de dados.
+    ##### Obs2: O PhpMyAdmin também e instalado e pode ser acessado em `http://localhost:8080/`.
 
-<img width="997" alt="edit-this-file" src="https://user-images.githubusercontent.com/18093541/63131820-0794d880-bf8d-11e9-8b3d-c096355e9389.png">
+### Atualização
+
+1. Faça o backup dos arquivos e do banco de dados;
+2. Substitua os arquivos pelos da nova versão;
+3. Rode o comando `composer install --no-dev` a partir da raiz do projeto.
+4. Volte as configurações nos arquivos database.php e config.php;
+5. Logue no sistema como administrador e navegue até Configurações -> Sistema e clique no botão `Atualizar Banco de Dados` para atualizar seu banco de dados. Obs.: Também é possível atualizar o banco de dados via terminal rodando o comando `php index.php tools migrate` a partir da raiz do projeto;
+6. Pronto, sua atualização está concluída;
+
+### Atualização (Docker)
+
+1. Pare o docker de rodar;
+2. Faça o backup dos arquivos e do banco de dados;
+3. Substitua os arquivos pelos da nova versão;
+4. Volte as configurações nos arquivos database.php e config.php;
+5. Entre na pasta `docker` no seu terminal e rode o comando `docker-compose up --force-recreate`;
+6. Logue no sistema como administrador e navegue até Configurações -> Sistema e clique no botão `Atualizar Banco de Dados` para atualizar seu banco de dados. Obs.: Também é possível atualizar o banco de dados via terminal rodando o comando `php index.php tools migrate` a partir da raiz do projeto;
+7. Pronto, sua atualização está concluída;
+
+### Atualização via sistema
+
+1. Primeiro é necessário atualizar manualmente o sistema para a versão v4.4.0;
+2. Quando estiver nessa versão é possível atualizar o sistema clicando no botão "Atualizar Mapos" em Sistema >> Configurações;
+3. Serão baixados e atualizados todos os arquivos exceto: `config.php`, `database.php` e `email.php`;
+
+### Comandos de terminal
+
+Para listar todos os comandos de terminal disponíveis, basta executar o comando `php index.php tools` a partir da raiz do projeto, após feita todo o processo de instalação.
+
+### Frameworks/Bibliotecas
+* [bcit-ci/CodeIgniter](https://github.com/bcit-ci/CodeIgniter)
+* [twbs/bootstrap](https://github.com/twbs/bootstrap)
+* [jquery/jquery](https://github.com/jquery/jquery)
+* [jquery/jquery-ui](https://github.com/jquery/jquery-ui)
+* [mpdf/mpdf](https://github.com/mpdf/mpdf)
+* [Matrix Admin](http://wrappixel.com/demos/free-admin-templates/matrix-admin/index.html)
+* [filp/whoops](https://github.com/filp/whoops)
+
+### Requerimentos
+* PHP >= 7.3
+* MySQL
+* Composer
+
+### Doações
+
+Gosta do mapos e gostaria de contribuir com seu desenvolvimento?
+
+Doações podem ser realizadas nos links:
+* [catarse/mapos](https://www.catarse.me/mapos) - Mensal
+* [kofi/mapos](https://ko-fi.com/mapos) - Exporádica
+
+### Contribuidores
+| [<img src="https://avatars.githubusercontent.com/Pr3d4dor?s=115"><br><sub>Gianluca Bine</sub>](https://github.com/Pr3d4dor) | [<img src="https://avatars.githubusercontent.com/Henrique-Miranda?s=115"><br><sub>Henrique Miranda</sub>](https://github.com/Henrique-Miranda) | [<img src="https://avatars.githubusercontent.com/mariolucasdev?s=115"><br><sub>Mário Lucas</sub>](https://github.com/mariolucasdev) | [<img src="https://avatars.githubusercontent.com/HelanAllysson?s=115"><br><sub>Helan Allysson</sub>](https://github.com/HelanAllysson) | [<img src="https://avatars.githubusercontent.com/KansasMyers?s=115"><br><sub>KansasMyers</sub>](https://github.com/KansasMyers)
+|:-:|:-:|:-:|:-:|:-:|
+| [<img src="https://avatars.githubusercontent.com/daniellbastos?s=115"><br><sub>Daniel Bastos</sub>](https://github.com/daniellbastos) | [<img src="https://avatars.githubusercontent.com/github?s=115"><br><sub>drelldeveloper</sub>](https://github.com/drelldeveloper) | [<img src="https://avatars.githubusercontent.com/fontebasso?s=115"><br><sub>Samuel Fontebasso</sub>](https://github.com/fontebasso) | [<img src="https://avatars.githubusercontent.com/marllonferreira?s=115"><br><sub>marllonferreira</sub>](https://github.com/marllonferreira) | [<img src="https://avatars.githubusercontent.com/rodrigo3d?s=115"><br><sub>Rodrigo Ribeiro</sub>](https://github.com/rodrigo3d)
+| [<img src="https://avatars.githubusercontent.com/willph?s=115"><br><sub>Wilmerson</sub>](https://github.com/willph) | [<img src="https://avatars.githubusercontent.com/bulfaitelo?s=115"><br><sub>Thiago Rodrigues</sub>](https://github.com/bulfaitelo) | [<img src="https://avatars.githubusercontent.com/mvnp?s=115"><br><sub>Marcos Pereira</sub>](https://github.com/mvnp)| [<img src="https://avatars.githubusercontent.com/marcotuliomtb?s=115"><br><sub>Marcos</sub>](https://github.com/marcotuliomtb)| [<img src="https://avatars.githubusercontent.com/zanzoushio?s=115"><br><sub>ZanzouShio</sub>](https://github.com/ZanzouShio)
+| [<img src="https://avatars.githubusercontent.com/seitbnao?s=115"><br><sub>Djunio</sub>](https://github.com/seitbnao)
 
 
-Delete this placeholder line:
-
-```
-<p>Welcome to your first GitHub Pages website!</p>
-```
-
-Then, paste the template to line 15 and fill in the blanks.
-
-<img width="1032" alt="edit-githuboctocat-index" src="https://user-images.githubusercontent.com/18093541/63132339-c3a2d300-bf8e-11e9-8222-59c2702f6c42.png">
-
-
-When you’re done, scroll down to the `Commit changes` section near the bottom of the edit page. Add a short message explaining your change, like "Add my introduction", then click `Commit changes`.
-
-
-<img width="1030" alt="add-my-username" src="https://user-images.githubusercontent.com/18093541/63131801-efbd5480-bf8c-11e9-9806-89273f027d16.png">
-
-Once you click `Commit changes`, your changes will automatically be published on your GitHub Pages website. Refresh the page to see your new changes live in action.
-
-:tada: You just made your first commit! :tada:
-
-## Work with GitHub on your computer using GitHub Desktop
-
-**GitHub Desktop** is a free app from GitHub for Windows and Mac that allows you to easily work with your GitHub repositories from your computer. You just saw how you can commit to a repository from GitHub.com, but most developers do the majority of their work from their computer (locally) before pushing it up to GitHub. So let’s try that out!
-
-[Download GitHub Desktop](https://desktop.github.com/)
-
-## Practice: Use GitHub Desktop and an editor to make a change from your computer
-
-Start by downloading GitHub Desktop if you haven’t already done so, and install it on your computer. Go through the GitHub Desktop onboarding steps, and when you get to the “Let’s get started” screen, go ahead and choose the repository you were just working with on GitHub.com, and click “Clone.”
-
-### Using an editor to make changes
-
-Let’s make sure you have a text editor on your computer - this is what you'll use to actually make changes to your files. If you already know you have an editor, then skip to the next step. Otherwise, download and install either [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/) and restart GitHub Desktop before proceeding to the next step.
-
-Let’s make a change to your GitHub Pages site, just like you did on GitHub.com, except this time we’re going to do it all from your computer. From GitHub Desktop, click the “Open in…” button in the middle of the screen to “open the repository in your external editor” that you just downloaded. 
-
-![Open-in-editor](https://user-images.githubusercontent.com/721500/63188833-82fb9600-c030-11e9-8777-a67c1713d59f.png)
-
-In the left sidebar, click the `index.html` file to open it, and go ahead and add another line. Maybe, “Building websites is fun! You should try it too!” or whatever you want to add. 
-
-![Make-changes](https://user-images.githubusercontent.com/721500/63188832-82fb9600-c030-11e9-9f7b-7d15385a16f0.png)
-
-Now switch back to GitHub Desktop, and you should see the change you made.
-
-![View-changes](https://user-images.githubusercontent.com/721500/63188835-82fb9600-c030-11e9-8980-43a8231ca23a.png)
-
-### Commit your changes
-
-Now you can commit your changes by typing a message in the `Summary` box at the bottom left, and then click the blue `Commit` button below that.
-
-![Commit-changes](https://user-images.githubusercontent.com/721500/63188831-8262ff80-c030-11e9-809a-f87d8b544935.png)
-
-### Push your changes to GitHub.com
-
-One of the great things about working on things on your computer is that you get to control when other people see them. Now let’s push your commit to GitHub.com as well so it’s saved there and you can publish it to your site. Click the “Push origin” button to push your commit to GitHub.com. 
-
-![Push-to-GitHub](https://user-images.githubusercontent.com/721500/63188834-82fb9600-c030-11e9-9d8e-6c6ed6d48504.png)
-
-Now click the “View on GitHub” button to get back to your repository’s page on GitHub.com.
-
-![View-on-GitHub](https://user-images.githubusercontent.com/721500/63188836-82fb9600-c030-11e9-9bc5-cf304398500d.png)
-
-### Deploy and see your changes live on your GitHub Pages website!
-
-Once you commit your changes, they are automatically published on your GitHub Pages website. Refresh your browser to see it live!
-
-### Celebrate!
-
-Hooray! Now you have your repository linked between your computer and GitHub.com. In the future, you can use GitHub Desktop to push any changes you decide to make from your computer.
-
-## Extra Credit: Keep on building!
-
-Change the placeholder Octocat gif on your GitHub Pages website by [creating your own personal Octocat emoji](https://myoctocat.com/build-your-octocat/) or [choose a different Octocat gif from our logo library here](https://octodex.github.com/). Add that image to line 12 of your `index.html` file, in place of the `<img src=` link.
-
-Want to add even more code and fun styles to your GitHub Pages website? [Follow these instructions](https://github.com/github/personal-website) to build a fully-fledged static website.
-
-![octocat](./images/create-octocat.png)
-
-## Everything you need to know about GitHub
-
-Getting started is the hardest part. If there’s anything you’d like to know as you get started with GitHub, try searching [GitHub Help](https://help.github.com). Our documentation has tutorials on everything from changing your repository settings to configuring GitHub from your command line.
+## Autor
+| [<img src="https://avatars.githubusercontent.com/RamonSilva20?s=115"><br><sub>Ramon Silva</sub>](https://github.com/RamonSilva20) |
+| :---: |
